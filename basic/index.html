@@ -12,21 +12,30 @@
             table, td, th {
                 border: 1px solid black;
             }
+            #jumpscare{
+                background-image: "url('https://nerfwire.com/wp-content/uploads/2019/05/mario-bros.jpg')";
+            }
         </style>
     </head>
     
     
-    <body style="background-color: forestgreen;">
+    <body style="background-color: rgb(182, 146, 216);">
+        <script>
+            function jumpScare() {
+                document.getElementById("jumpscare").style.backgroundImage = "url('https://c.tenor.com/Mga8410MDgsAAAAM/mario-games-super-mario.gif')";
+            }
+        </script>
+
         <h1> The basics </h1>
         <p>
             Image>
         </p>
         <br>
-        <a href ="www.google.com">
+        <a href ="https://www.google.com">
             <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="google logo">
         </a>
         <p>
-            mesa de conteudos >
+            content table >
         </p>
         <br>
         <table>
@@ -36,12 +45,28 @@
             </tr>
             <tr>
                 <td> Super Mario Bros</td>
-                <td> Tetris</td>
+                <td> 1m</td>
             </tr>
             <tr>
-                <td>1m</td>
-                <td>700m</td>
+                <td> tetris </td>
+                <td> 700m </td>
             </tr>
         </table>
+        <p>
+            text >
+        </p>
+        <br>
+        <h1> lorem </h1>
+        <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">
+            ipsum
+        </a>
+        <p>
+            idk >
+        </p>
+        <br>
+        <button onclick "jumpScare()" id="jumpscare";">
+            cool
+        </button>
+
     </body>
 </html>
