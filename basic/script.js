@@ -10,3 +10,7 @@ export function polyline(arr, canvas, color= '#000') {
     ctx.strokeStyle = color;
     ctx.stroke();
 }
+
+export function draw_circle(x, y, canvas, color= '#000') {
+    
+}
