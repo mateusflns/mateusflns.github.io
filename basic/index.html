@@ -22,7 +22,9 @@
     <body style="background-color: rgb(182, 146, 216);">
         <script>
             function jumpScare() {
-                document.getElementById("jumpscare").style.backgroundImage = "url('https://c.tenor.com/Mga8410MDgsAAAAM/mario-games-super-mario.gif')";
+                //change the image from the element with id "jumpscare"
+                document.getElementById("jumpscare").src = "'https://c.tenor.com/Mga8410MDgsAAAAM/mario-games-super-mario.gif";
+                document.alert("GOTCHA!");
             }
         </script>
 
@@ -63,8 +65,10 @@
         <p>
             idk >
         </p>
+        <img id=jumpscare src="https://nerfwire.com/wp-content/uploads/2019/05/mario-bros.jpg">        
+        </img>
         <br>
-        <button onclick "jumpScare()" id="jumpscare";">
+        <button onclick "jumpScare()">
             cool
         </button>
 
