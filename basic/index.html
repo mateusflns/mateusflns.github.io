@@ -12,21 +12,12 @@
             table, td, th {
                 border: 1px solid black;
             }
-            #jumpscare{
-                background-image: "url('https://nerfwire.com/wp-content/uploads/2019/05/mario-bros.jpg')";
-            }
         </style>
     </head>
     
     
     <body style="background-color: rgb(182, 146, 216);">
-        <script>
-            function jumpScare() {
-                //change the image from the element with id "jumpscare"
-                document.getElementById("jumpscare").src = "'https://c.tenor.com/Mga8410MDgsAAAAM/mario-games-super-mario.gif";
-                document.alert("GOTCHA!");
-            }
-        </script>
+        
 
         <h1> The basics </h1>
         <p>
@@ -68,9 +59,15 @@
         <img id=jumpscare src="https://nerfwire.com/wp-content/uploads/2019/05/mario-bros.jpg">        
         </img>
         <br>
-        <button onclick "jumpScare()">
+        <button onclick="jumpScare()">
             cool
         </button>
-
+        <script>
+            function jumpScare() {
+                //change the image from the element with id "jumpscare"
+                document.getElementById("jumpscare").src = "https://c.tenor.com/Mga8410MDgsAAAAM/mario-games-super-mario.gif";
+                document.alert("GOTCHA!");
+            }
+        </script>
     </body>
 </html>
