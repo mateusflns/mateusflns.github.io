@@ -84,19 +84,19 @@
             }
 
 
+
+
+
             var start = true;
             function pong(){
-                if (start != true){
-                   return;
-                }else{
-                    start == false;
-                }
+                document.getElementById("pb").parentNode.removeChild(document.getElementById("pb"));
                 var canvas = document.getElementById("pong");
                 var ctx = canvas.getContext("2d");
                 var x = Math.floor(Math.random() * canvas.width);
                 var y = Math.floor(Math.random() * canvas.height);
                 xspd = 1;
                 yspd = 1;
+                const bruheffect = document.getElementById("audio");
                 function update(){
                     ctx.beginPath();
                     ctx.arc(x, y, 5, 0, 2 * Math.PI);
@@ -107,11 +107,16 @@
                     if(x > 100 || x < 0){
                         xspd = (Math.random()+1 * 3) * (Math.sign(xspd) * -1);
                         yspd = (Math.random() * 3) * (Math.sign(yspd));
+
+                        bruheffect.cloneNode(true).play();
+
                     }
 
                     if(y > 100 || y < 0){
                         yspd = (Math.random()+1 * 3) * (Math.sign(yspd) * -1);
                         xspd = (Math.random() * 3) * (Math.sign(xspd));
+                        
+                        bruheffect.cloneNode(true).play();
                     }
                 }
                 setInterval(update, 32);
@@ -133,6 +138,6 @@
         </script>
        
        
-        <button onclick="pong()"> ping </button>
+        <button onclick="pong()" id="pb"> ping </button>
     </body>
 </html>

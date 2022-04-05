@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+    <title> Game ! </title>
+</head>
+
+
+
+<body>
+    <h1>Gaming bruh</h1>
+    <canvas width="600" height="300" id="canvas" style="background-color: beige;"></canvas>
+    <button onclick="run()"> Run game </button>
+    
+    <script>
+        var canvas = document.getElementById("canvas");
+        window.ctx = canvas.getContext("2d");
+
+        window.addEventListener("keydown", function(event){
+            console.log(event)
+            if (event.keyCode == 87){
+                    window.player.vsp = window.player.jump;
+            }
+        });
+
+        window.addEventListener("keyup", function(event){
+            console.log(event)
+            // if (event.keyCode == 87){
+            //         window.player.dir = 0;
+            // }else if (event.keyCode == 83){
+            //         window.player.dir = 0;
+            
+        });
+
+
+        function draw_obstacles(hole_x, hole_y, ctx, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(hole_x-20, 0, 40, hole_y-20);
+            ctx.fillRect(hole_x-20, hole_y+20, 40, 300);
+
+        }
+
+
+        function draw_player(x, y, ctx, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, 10, 10);
+        }
+
+        
+        function run(){
+            window.timerupper=300
+            window.player = [];
+            window.player.x = 30;
+            window.player.y = 150;
+            window.player.color = "#00f";
+            window.player.speed = 5;
+            window.player.dir = 0;
+            window.player.grv = 0.6;
+            window.player.jump = -6;
+            window.player.vsp = 0;
+
+
+            window.holes = [];
+            window.hspd = -5;
+            window.timer = 0
+            window.interval = setInterval(game_update, 32);
+        }
+
+
+        function game_update(){
+            loop();
+        }
+
+
+
+
+        function loop(){
+            //console.log(timer)
+            if (window.timer <= 0){
+                //console.log("hole created");
+                create_hole();
+                var time = Math.floor(Math.random() * timerupper);
+                while (time < timerupper*0.2){
+                    time = Math.floor(Math.random() * timerupper);
+                }
+                window.timer = time
+            }else{
+                window.timer--;
+            }
+
+            window.ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            //update coords and draw window.holes
+            for (var i = 0; i < window.holes.length; i++){
+                
+                //remove window.holes that are off the screen
+                if (window.holes[i].x < 0){
+                    window.holes.splice(i, 1);
+                }else{
+                    window.holes[i].x += window.hspd;
+                    draw_obstacles(window.holes[i].x, window.holes[i].y, window.ctx, "#f00");
+                    //console.log(window.holes[i].x);
+                }
+                if (window.holes[i].x-25 < window.player.x && window.holes[i].x+25 > window.player.x){
+                    if(window.player.y < window.holes[i].y-25 || window.player.y > window.holes[i].y+25){
+                        alert("game over!!! bruh you trash");
+                        clearInterval(window.interval);
+                        run();
+                    }
+                }
+            }
+
+            window.player.y += window.player.dir * window.player.speed;
+
+            //gravity
+            if (window.player.vsp < 5){
+                window.player.vsp += window.player.grv;
+            }
+
+            window.player.y += window.player.vsp;
+
+
+            draw_player(window.player.x, window.player.y, window.ctx, window.player.color);
+
+
+        }
+
+
+
+
+
+        function create_hole(){
+            if (window.hspd < 30){
+                window.hspd -= 0.5;
+            }
+            if (timerupper > 100){
+                timerupper -= 3;
+            }
+            var hole = [];
+            hole.x = canvas.width;
+            hole.y = Math.floor(Math.random() * canvas.height);
+            hole.color = "#f00";
+            
+            window.holes.push(hole);
+        }
+
+
+
+    </script>
+</body>
+
+
+</html>
