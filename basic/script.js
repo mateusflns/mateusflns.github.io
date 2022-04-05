@@ -1,5 +1,6 @@
 export function polyline(arr, canvas, color= '#000') {
-    var ctx = canvas.getContext('2d');
+    var c = document.getElementById(canvas);
+    var ctx = c.getContext('2d');
     ctx.beginPath();
     ctx.moveTo(arr[0][0], arr[0][1]);
     for (var i = 1; i < arr.length; i++) {
@@ -8,12 +9,4 @@ export function polyline(arr, canvas, color= '#000') {
     }
     ctx.strokeStyle = color;
     ctx.stroke();
-}
-
-export function jumpScare(){
-    //change the image from the element with id "jumpscare"
-    const image = document.getElementById("jumpscare")
-    image.src = "https://c.tenor.com/Mga8410MDgsAAAAM/mario-games-super-mario.gif";
-    image.style = "width: 800; height: 600px;"
-    document.getElementById("audio").play();
 }
